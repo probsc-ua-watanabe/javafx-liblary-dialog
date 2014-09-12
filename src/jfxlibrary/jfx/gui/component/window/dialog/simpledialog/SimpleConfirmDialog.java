@@ -14,7 +14,7 @@ import javafx.stage.Window;
  * @author ws
  */
 public final class SimpleConfirmDialog extends SimpleDialogBase<SimpleConfirmDialog.ConfirmStatus>{
-    public enum ConfirmStatus {YES,NO,CANCEL};
+    public enum ConfirmStatus {YES, NO, CANCEL};
     public enum ConfirmMode {YES_NO, YES_NO_CANCEL};
     
     public SimpleConfirmDialog(Window owner) {
