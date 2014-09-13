@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 abstract public class WindowBaseController implements Initializable{
     @FXML protected Node titleBar;
-    
+     
     protected Stage parent;
     private double offsetX;
     private double offsetY;
