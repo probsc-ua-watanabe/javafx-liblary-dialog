@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import jfxlibrary.jfx.gui.component.window.dialog.DialogBase;
 
@@ -47,8 +48,9 @@ public abstract class SimpleDialogBase<T> extends DialogBase<T>{
         contents.setMinSize(284, 80);
         contents.setPrefWidth(280);
         contents.setSpacing(10);
-        contents.setPadding(new Insets(5, 10, 0, 10));
+        contents.setPadding(new Insets(2, 10, 2, 10));
         contents.setAlignment(Pos.CENTER_LEFT);
+        contents.setStyle("-fx-background-color:#fff;");
         createIcon(type).ifPresent((ImageView imgView) -> {
             contents.getChildren().add(imgView);
         });
