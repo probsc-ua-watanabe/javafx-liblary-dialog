@@ -1,28 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package jfxlibrary.jfx.gui.component.window.dialog.simpledialog;
 
 import java.util.Optional;
 import java.util.function.Function;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Window;
+import javafx.scene.layout.HBox;
 import jfxlibrary.jfx.gui.component.window.dialog.DialogBase;
 
-/**
- *
- * @author ws
- */
 public abstract class SimpleDialogBase<T> extends DialogBase<T>{
-
-    public SimpleDialogBase(Window owner) {
-        super(owner);
-    }
     public enum MessageType {INFORMATION, ERROR, WARNING, QUESTION, PLAIN}
+    public enum ConfirmStatus {YES, NO, CANCEL};
     
     protected Optional<ImageView> createIcon(MessageType type){
         ImageView icon = null;
@@ -50,5 +40,22 @@ public abstract class SimpleDialogBase<T> extends DialogBase<T>{
             default:
         }
         return Optional.ofNullable(icon);
+    }
+    
+    protected HBox createBody(MessageType type, String message){
+        HBox contents = new HBox();
+        contents.setMinSize(284, 80);
+        contents.setPrefWidth(280);
+        contents.setSpacing(10);
+        contents.setPadding(new Insets(5, 10, 0, 10));
+        contents.setAlignment(Pos.CENTER_LEFT);
+        createIcon(type).ifPresent((ImageView imgView) -> {
+            contents.getChildren().add(imgView);
+        });
+        Label mesLbl = new Label(message);
+        mesLbl.setWrapText(true);
+        contents.getChildren().add(mesLbl);
+        
+        return contents;
     }
 }
